@@ -1,6 +1,37 @@
 # React MCP Client
 
-A React client application for interacting with a Model Context Protocol (MCP) server.
+A React application for interacting with a Model Context Protocol (MCP) server, featuring tools like a BMI Calculator and a JSON Fetcher.
+
+- **Repository URL**: [https://github.com/ugmurthy/react-mcp-client](https://github.com/ugmurthy/react-mcp-client)
+- **Live Demo**: No link provided.
+- **Screenshots**: Not available in the project files.
+
+## Table of Contents
+
+- [React MCP Client](#react-mcp-client)
+  - [Table of Contents](#table-of-contents)
+  - [Technologies Used](#technologies-used)
+  - [Features](#features)
+  - [Prerequisites](#prerequisites)
+  - [Getting Started](#getting-started)
+  - [Project Structure](#project-structure)
+  - [Available Pages](#available-pages)
+  - [MCP Integration](#mcp-integration)
+    - [Available Tools](#available-tools)
+  - [Error Handling](#error-handling)
+  - [Development](#development)
+    - [Adding a New Tool](#adding-a-new-tool)
+    - [Adding a New Page](#adding-a-new-page)
+  - [License](#license)
+
+## Technologies Used
+
+- React
+- Vite
+- TypeScript
+- Chakra UI
+- Chart.js
+- Model Context Protocol SDK
 
 ## Features
 
@@ -8,12 +39,12 @@ A React client application for interacting with a Model Context Protocol (MCP) s
 - View available tools provided by the server
 - Use the BMI Calculator tool to calculate BMI based on weight and height
 - Use the JSON Fetcher tool to fetch and display JSON data from a URL
+- Use the Chart Visualizer tool to generate interactive charts from JSON data
 - Error handling with ErrorBoundary
 - Responsive design
 
 ## Prerequisites
 
-- Node.js (v16 or higher)
 - Node.js (v16 or higher)
 - pnpm (recommended), npm, or yarn
 - An MCP server running locally
@@ -60,6 +91,7 @@ react-mcp-client/
 - **Home**: Displays connection status and available tools
 - **BMI Calculator**: Calculate BMI based on weight and height
 - **JSON Fetcher**: Fetch and display JSON data from a URL
+- **Chart Visualizer**: Generate various chart types from JSON data.
 - **404 Page**: Displayed when a route doesn't exist
 
 ## MCP Integration

@@ -5,42 +5,42 @@ import './Home.css';
 const Home = () => {
   const { isConnected } = useMcp();
 
-  const tools = [
+  const pages = [
     {
       name: 'Chart Visualizer',
       description: 'Generate interactive charts from your data.',
       tools: ['generate_chart'],
-      path: '/chart-visualizer',
+      path: '/tools/chart-visualizer',
     },
     {
       name: 'JSON Fetcher',
       description: 'Fetch and display JSON data from a URL.',
       tools: ['fetch_json'],
-      path: '/json-fetcher',
+      path: '/tools/json-fetcher',
     },
     {
       name: 'BMI Calculator',
       description: 'Calculate Body Mass Index (BMI).',
       tools: ['calculate_bmi'],
-      path: '/bmi-calculator',
+      path: '/tools/bmi-calculator',
     },
   ];
 
   return (
     <div className="home-container">
       <div className="tool-list">
-        {tools.map((tool) => (
+        {pages.map((page) => (
           <Link
-            key={tool.name}
-            to={tool.path}
+            key={page.name}
+            to={page.path}
             className={`tool-card-link ${!isConnected ? 'disabled' : ''}`}
             onClick={(e) => !isConnected && e.preventDefault()}
           >
             <div className="tool-card">
-              <h3>{tool.name}</h3>
-              <p className="tool-description">{tool.description}</p>
+              <h3>{page.name}</h3>
+              <p className="tool-description">{page.description}</p>
               <div className="tool-names">
-                {tool.tools.map((t) => (
+                {page.tools.map((t) => (
                   <span key={t} className="tool-name">
                     {t}
                   </span>

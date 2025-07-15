@@ -14,9 +14,9 @@ const App = () => {
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/bmi-calculator" element={<BmiCalculator />} />
-            <Route path="/json-fetcher" element={<JsonFetcher />} />
-            <Route path="/chart-visualizer" element={<ChartVisualizer />} />
+            <Route path="/tools/bmi-calculator" element={<BmiCalculator />} />
+            <Route path="/tools/json-fetcher" element={<JsonFetcher />} />
+            <Route path="/tools/chart-visualizer" element={<ChartVisualizer />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
