@@ -88,6 +88,8 @@ const ChartVisualizer = () => {
   // Initialize the iframe reference when the component mounts
   useEffect(() => {
     console.log('Component mounted, iframe reference initialized');
+    // Set chart data to empty string on mount to ensure clean state
+    setChartData('');
   }, []);
 
   // Update sample data when chart type changes
@@ -186,49 +188,11 @@ const ChartVisualizer = () => {
       
       // Update iframe content
       console.log('Updating iframe content');
-      
-      try {
-        // Create a new iframe if it doesn't exist
-        if (!iframeRef.current) {
-          console.error('Iframe reference is null, but we will proceed with the update');
-        }
-        
-        // Always use the iframe reference from the JSX
-        const iframe = iframeRef.current;
-        if (iframe) {
-          console.log('Using iframe reference from JSX');
-          
-          // Try to access the document through contentDocument first
-          if (iframe.contentDocument) {
-            console.log('Writing HTML content to iframe document');
-            const doc = iframe.contentDocument;
-            doc.open();
-            doc.write(htmlContent);
-            doc.close();
-          }
-          // If contentDocument is not accessible, try contentWindow
-          else if (iframe.contentWindow) {
-            console.log('Using contentWindow');
-            const win = iframe.contentWindow;
-            win.document.open();
-            win.document.write(htmlContent);
-            win.document.close();
-          }
-          
-          // Add event listener to catch errors in the iframe
-          iframe.onload = () => {
-            console.log('Iframe loaded successfully');
-            // Force a resize event to ensure the chart is properly rendered
-            if (iframe.contentWindow) {
-              iframe.contentWindow.dispatchEvent(new Event('resize'));
-            }
-          };
-        } else {
-          console.error('Iframe reference is still null after check');
-        }
-      } catch (err) {
-        console.error('Error updating iframe:', err);
-        setLocalError(`Error updating iframe: ${err instanceof Error ? err.message : String(err)}`);
+      if (iframeRef.current) {
+        console.log('Iframe ref is available. Setting srcdoc.');
+        iframeRef.current.srcdoc = htmlContent;
+      } else {
+        console.error('Iframe ref is NOT available when trying to set srcdoc.');
       }
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Unknown error';

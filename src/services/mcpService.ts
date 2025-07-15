@@ -297,7 +297,7 @@ class McpService {
               <div class="chart-container">
                 <canvas id="chart"></canvas>
               </div>
-              <div id="debug-output" class="debug-info">Loading chart...</div>
+              
               <script>
                 const debugOutput = document.getElementById('debug-output');
                 

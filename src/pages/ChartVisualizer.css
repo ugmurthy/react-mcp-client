@@ -7,19 +7,20 @@
 }
 
 .chart-content {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr; /* Default to single column */
   gap: 20px;
 }
 
-@media (min-width: 768px) {
+/* Use two columns on larger screens */
+@media (min-width: 1024px) {
   .chart-content {
-    flex-direction: row;
+    grid-template-columns: 1fr 2fr; /* Form takes 1 part, chart takes 2 */
   }
 }
 
 .chart-form-container {
-  flex: 1;
+  /* No flex property needed with grid */
 }
 
 .chart-form {
@@ -29,8 +30,7 @@
 }
 
 .chart-preview {
-  flex: 1;
-  min-height: 450px;
+  min-height: 500px; /* Increase min-height for better visibility */
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 10px;
@@ -40,7 +40,7 @@
 
 .chart-iframe {
   width: 100%;
-  height: 400px;
+  height: 100%; /* Fill the container */
   border: none;
   background-color: white;
   display: block;
@@ -51,7 +51,7 @@
 
 .iframe-container {
   width: 100%;
-  height: 400px;
+  height: 100%; /* Fill the container */
   overflow: hidden;
   position: relative;
   border: 1px solid #ddd;
@@ -67,7 +67,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 400px;
+  height: 100%; /* Fill the container */
+  min-height: 400px; /* Ensure a decent size when empty */
   background-color: #f9f9f9;
   border-radius: 4px;
   margin-top: 10px;
