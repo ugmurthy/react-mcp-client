@@ -4,7 +4,7 @@ import { useMcp } from '../context/McpContext';
 import './BmiCalculator.css';
 
 const BmiCalculator = () => {
-  const { calculateBmi, isConnected, isConnecting, error } = useMcp();
+  const { calculateBmi, isConnected, error } = useMcp();
   const [weight, setWeight] = useState<number | ''>('');
   const [height, setHeight] = useState<number | ''>('');
   const [result, setResult] = useState<string | null>(null);

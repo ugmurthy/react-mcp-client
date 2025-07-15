@@ -209,23 +209,6 @@ const ChartVisualizer = () => {
     }
   };
 
-  const handleSampleDataClick = () => {
-    // Make sure we're using the complete sample data
-    console.log('Setting sample data for chart type:', chartType);
-    const data = sampleData[chartType];
-    console.log('Sample data:', data);
-    
-    // Format with proper indentation for readability
-    const formattedData = JSON.stringify(data, null, 2);
-    console.log('Formatted data length:', formattedData.length);
-    console.log('Sample data structure validation:');
-    console.log('- Has labels:', !!data.labels);
-    console.log('- Labels length:', data.labels?.length);
-    console.log('- Has datasets:', !!data.datasets);
-    console.log('- Datasets length:', data.datasets?.length);
-    
-    setCustomData(formattedData);
-  };
 
   return (
     <div className="container">

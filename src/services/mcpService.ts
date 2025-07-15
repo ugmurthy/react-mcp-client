@@ -1,5 +1,3 @@
-// Import types only from MCP SDK
-import type { Client } from "@modelcontextprotocol/sdk/client/index.js";
 
 // Define types for the MCP tools
 export interface BmiCalculatorParams extends Record<string, unknown> {
@@ -55,16 +53,8 @@ export interface McpToolResult {
   }>;
 }
 
-// Define the shape of the response from the MCP server
-interface McpToolResponse {
-  content: Array<{
-    type: string;
-    text: string;
-  }>;
-}
 
 class McpService {
-  private client: Client | null = null;
   private isConnected = false;
   private knownTools: McpTool[] = [
     {
