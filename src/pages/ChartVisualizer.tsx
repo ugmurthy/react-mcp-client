@@ -230,7 +230,7 @@ const ChartVisualizer = () => {
   return (
     <div className="container">
       <header className="header">
-        <h1>Chart Visualizer</h1>
+        <h2>Chart Visualizer</h2>
         <p>Generate interactive charts using the MCP server</p>
       </header>
 
@@ -250,91 +250,103 @@ const ChartVisualizer = () => {
               <form onSubmit={handleGenerateChart} className="chart-form">
                 <div className="form-group">
                   <label htmlFor="chartType">Chart Type</label>
-                  <select
-                    id="chartType"
-                    value={chartType}
-                    onChange={(e) => setChartType(e.target.value as any)}
-                    className="select-input"
-                  >
-                    <option value="bar">Bar Chart</option>
-                    <option value="line">Line Chart</option>
-                    <option value="pie">Pie Chart</option>
-                    <option value="scatter">Scatter Plot</option>
-                  </select>
+                  <div className="input-wrapper">
+                    <select
+                      id="chartType"
+                      value={chartType}
+                      onChange={(e) => setChartType(e.target.value as any)}
+                      className="select-input"
+                    >
+                      <option value="bar">Bar Chart</option>
+                      <option value="line">Line Chart</option>
+                      <option value="pie">Pie Chart</option>
+                      <option value="scatter">Scatter Plot</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div className="form-group">
                   <label htmlFor="title">Chart Title</label>
-                  <input
-                    id="title"
-                    type="text"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    className="text-input"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="xAxisLabel">X Axis Label</label>
-                  <input
-                    id="xAxisLabel"
-                    type="text"
-                    value={xAxisLabel}
-                    onChange={(e) => setXAxisLabel(e.target.value)}
-                    className="text-input"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="yAxisLabel">Y Axis Label</label>
-                  <input
-                    id="yAxisLabel"
-                    type="text"
-                    value={yAxisLabel}
-                    onChange={(e) => setYAxisLabel(e.target.value)}
-                    className="text-input"
-                  />
-                </div>
-
-                <div className="form-group checkbox-group">
-                  <label>
+                  <div className="input-wrapper">
                     <input
-                      type="checkbox"
-                      checked={enableZoom}
-                      onChange={(e) => setEnableZoom(e.target.checked)}
+                      id="title"
+                      type="text"
+                      value={title}
+                      onChange={(e) => setTitle(e.target.value)}
+                      className="text-input"
                     />
-                    Enable Zoom
-                  </label>
-                </div>
-
-                <div className="form-group checkbox-group">
-                  <label>
-                    <input
-                      type="checkbox"
-                      checked={enablePan}
-                      onChange={(e) => setEnablePan(e.target.checked)}
-                    />
-                    Enable Pan
-                  </label>
+                  </div>
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="customData">Chart Data (JSON)</label>
-                  <div className="textarea-container">
-                    <textarea
-                      id="customData"
-                      value={customData}
-                      onChange={(e) => setCustomData(e.target.value)}
-                      className="json-textarea"
-                      rows={10}
+                  <label htmlFor="xAxisLabel">XAxis Label</label>
+                  <div className="input-wrapper">
+                    <input
+                      id="xAxisLabel"
+                      type="text"
+                      value={xAxisLabel}
+                      onChange={(e) => setXAxisLabel(e.target.value)}
+                      className="text-input"
                     />
-                    <button
-                      type="button"
-                      onClick={handleSampleDataClick}
-                      className="button button-small"
-                    >
-                      Use Sample Data
-                    </button>
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="yAxisLabel">YAxis Label</label>
+                  <div className="input-wrapper">
+                    <input
+                      id="yAxisLabel"
+                      type="text"
+                      value={yAxisLabel}
+                      onChange={(e) => setYAxisLabel(e.target.value)}
+                      className="text-input"
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label>Options</label>
+                  <div className="input-wrapper checkbox-container">
+                    <label htmlFor="enableZoom" className="checkbox-label">
+                      <input
+                        id="enableZoom"
+                        type="checkbox"
+                        checked={enableZoom}
+                        onChange={(e) => setEnableZoom(e.target.checked)}
+                      />
+                      Zoom
+                    </label>
+                    <label htmlFor="enablePan" className="checkbox-label">
+                      <input
+                        id="enablePan"
+                        type="checkbox"
+                        checked={enablePan}
+                        onChange={(e) => setEnablePan(e.target.checked)}
+                      />
+                      Pan
+                    </label>
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="customData">Data(JSON)</label>
+                  <div className="input-wrapper">
+                    <div className="textarea-container">
+                      <textarea
+                        id="customData"
+                        value={customData}
+                        onChange={(e) => setCustomData(e.target.value)}
+                        className="json-textarea"
+                        rows={10}
+                      />
+                     {/*} <button
+                        type="button"
+                        onClick={handleSampleDataClick}
+                        className="button button-small"
+                      >
+                        Use Sample Data
+                      </button>*/}
+                    </div>
                   </div>
                 </div>
 
@@ -349,8 +361,8 @@ const ChartVisualizer = () => {
             </div>
 
             <div className="chart-preview">
-              <h3>Chart Preview</h3>
-              <div className={chartData ? "iframe-container" : "empty-chart"}>
+              <h2>Chart Preview</h2>
+              <div className={chartData ? 'iframe-container' : 'empty-chart'}>
                 {/* Always render the iframe but hide it when no chart data */}
                 <iframe
                   ref={iframeRef}
@@ -395,11 +407,7 @@ const ChartVisualizer = () => {
         )}
       </div>
 
-      <div className="navigation">
-        <Link to="/" className="button button-secondary">
-          Back to Home
-        </Link>
-      </div>
+      
     </div>
   );
 };

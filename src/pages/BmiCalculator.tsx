@@ -55,7 +55,7 @@ const BmiCalculator = () => {
   return (
     <div className="container">
       <header className="header">
-        <h1>BMI Calculator</h1>
+        <h2>BMI Calculator</h2>
         <p>Calculate your Body Mass Index using the MCP server</p>
       </header>
 
@@ -126,11 +126,6 @@ const BmiCalculator = () => {
         )}
       </div>
 
-      <div className="navigation">
-        <Link to="/" className="button button-secondary">
-          Back to Home
-        </Link>
-      </div>
     </div>
   );
 };

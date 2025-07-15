@@ -1,8 +1,9 @@
 .chart-container {
   background-color: #fff;
   border-radius: 8px;
+  
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 10px;
   margin-bottom: 20px;
 }
 
@@ -13,9 +14,9 @@
 }
 
 /* Use two columns on larger screens */
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
   .chart-content {
-    grid-template-columns: 1fr 2fr; /* Form takes 1 part, chart takes 2 */
+    grid-template-columns: 1fr 1fr; /* Give form and chart equal space */
   }
 }
 
@@ -24,9 +25,10 @@
 }
 
 .chart-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  display: grid;
+  grid-template-columns: 90px 1fr; /* Give labels a fixed width */
+  gap: 1rem;
+  align-items: center;
 }
 
 .chart-preview {
@@ -99,20 +101,36 @@
 }
 
 .button-small {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  padding: 4px 8px;
-  font-size: 12px;
+  display: none; /* Hide the sample data button */
 }
 
-.checkbox-group {
+.form-group {
+  display: contents; /* Allows children to be direct members of the grid */
+}
+
+.form-group > label {
+  text-align: right;
+  font-weight: 500;
+}
+
+.input-wrapper {
+  width: 100%;
+}
+
+.checkbox-container {
   display: flex;
+  gap: 1.5rem;
   align-items: center;
 }
 
-.checkbox-group input {
-  margin-right: 8px;
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.checkbox-label input {
+  margin-right: 0.5rem;
 }
 
 .error-container {

@@ -16,6 +16,7 @@ const JsonFetcher: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [response, setResponse] = useState<JsonResponse | null>(null);
   const [formattedJson, setFormattedJson] = useState<string>('');
+  const [isMetaVisible, setIsMetaVisible] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,8 +59,8 @@ const JsonFetcher: React.FC = () => {
   return (
     <div className="container">
       <div className="header">
-        <h1>JSON Fetcher</h1>
-        <p>Fetch and display JSON data from any URL</p>
+        <h2>JSON Fetcher</h2>
+        <p>Fetch and display data from any URL returns JSON data</p>
       </div>
 
       {!isConnected && (
@@ -77,7 +78,7 @@ const JsonFetcher: React.FC = () => {
               id="url"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              placeholder="https://example.com/api/data.json"
+              placeholder="https://jsonplaceholder.typicode.com/todos/1"
               disabled={!isConnected || loading}
             />
           </div>
@@ -100,22 +101,29 @@ const JsonFetcher: React.FC = () => {
 
       {response && (
         <div className="card result">
-          <h3>Response</h3>
-          
-          <div className="response-meta">
-            <div><strong>Status:</strong> {response.status || 200}</div>
-            <div className="headers">
-              <strong>Headers:</strong>
-              <ul>
-                {response.headers && Object.entries(response.headers).map(([key, value]) => (
-                  <li key={key}><span>{key}:</span> {value}</li>
-                ))}
-                {(!response.headers || Object.keys(response.headers).length === 0) && (
-                  <li><em>No headers available</em></li>
-                )}
-              </ul>
-            </div>
+          <div className="response-header" onClick={() => setIsMetaVisible(!isMetaVisible)}>
+            <h3>Response</h3>
+            <button className="toggle-button">
+              {isMetaVisible ? 'Hide Details' : 'Show Details'}
+            </button>
           </div>
+          
+          {isMetaVisible && (
+            <div className="response-meta">
+              <div><strong>Status:</strong> {response.status || 200}</div>
+              <div className="headers">
+                <strong>Headers:</strong>
+                <ul>
+                  {response.headers && Object.entries(response.headers).map(([key, value]) => (
+                    <li key={key}><span>{key}:</span> {value}</li>
+                  ))}
+                  {(!response.headers || Object.keys(response.headers).length === 0) && (
+                    <li><em>No headers available</em></li>
+                  )}
+                </ul>
+              </div>
+            </div>
+          )}
           
           <div className="json-result">
             <h4>Data:</h4>
@@ -123,10 +131,6 @@ const JsonFetcher: React.FC = () => {
           </div>
         </div>
       )}
-
-      <div className="navigation">
-        <Link to="/" className="button button-secondary">Back to Home</Link>
-      </div>
     </div>
   );
 };

@@ -1,0 +1,82 @@
+.app-header {
+  background-color: #fff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #333;
+  text-decoration: none;
+}
+
+.tagline {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 2px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.github-link {
+  color: #333;
+}
+
+.github-link:hover {
+  color: #4299e1;
+}
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  animation: flashing 2s infinite;
+}
+
+.status-dot.connected {
+  background-color: #48bb78; /* green-500 */
+}
+
+.status-dot.disconnected {
+  background-color: #f56565; /* red-500 */
+}
+
+.status-dot.connecting {
+  background-color: #f6e05e; /* yellow-400 */
+}
+
+@keyframes flashing {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
