@@ -21,7 +21,7 @@ const Header = () => {
             <span className={`status-dot ${status}`} />
           </div>
           <a
-            href="https://github.com/your-username/your-repo-name"
+            href="https://github.com/ugmurthy/react-mcp-client"
             target="_blank"
             rel="noopener noreferrer"
             className="github-link"
